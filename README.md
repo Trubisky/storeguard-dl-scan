@@ -5,6 +5,8 @@
 
 Cross-platform BarcodeScanner for Cordova / PhoneGap.
 
+This plugin has been modified to include an extra field to the return object that indicates if the scanned code contains a segment terminator character. iOS and Android only.
+
 Follows the [Cordova Plugin spec](https://cordova.apache.org/docs/en/latest/plugin_ref/spec.html), so that it works with [Plugman](https://github.com/apache/cordova-plugman).
 
 ## Installation
