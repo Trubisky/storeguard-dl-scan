@@ -232,7 +232,7 @@ public class BarcodeScanner extends CordovaPlugin {
 							break;
 						}
 					}
-					obj.put("HASRS", foundRS);
+					obj.put("hasSegmentTerminator", foundRS);
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "This should never happen");
                 }
