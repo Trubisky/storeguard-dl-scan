@@ -227,7 +227,7 @@ public class BarcodeScanner extends CordovaPlugin {
 					boolean foundRS = false;
 					for (int i=0; i< dataToCheck.length(); i++){
 						int charCode = (int) dataToCheck.charAt(i);
-						if (charCode == 10){
+						if (charCode == 13){
 							foundRS = true;
 							break;
 						}
