@@ -220,9 +220,20 @@ public class BarcodeScanner extends CordovaPlugin {
             if (resultCode == Activity.RESULT_OK) {
                 JSONObject obj = new JSONObject();
                 try {
-                    obj.put(TEXT, intent.getStringExtra("SCAN_RESULT"));
+                    obj.put(TEXT, "penis"));
+					//obj.put(TEXT, intent.getStringExtra("SCAN_RESULT"));
                     obj.put(FORMAT, intent.getStringExtra("SCAN_RESULT_FORMAT"));
                     obj.put(CANCELLED, false);
+					String dataToCheck = intent.getStringExtra("SCAN_RESULT");
+					boolean foundRS = false;
+					for (int i=0; i< dataToCheck.length(); i++){
+						int charCode = (int) dataToCheck.charAt(i);
+						if (charCode == 30){
+							foundRS = true;
+							break;
+						}
+					}
+					obj.put("HASRS", foundRS);
                 } catch (JSONException e) {
                     Log.d(LOG_TAG, "This should never happen");
                 }
