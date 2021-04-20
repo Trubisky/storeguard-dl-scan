@@ -252,12 +252,23 @@
 //--------------------------------------------------------------------------
 - (void)returnSuccess:(NSString*)scannedText format:(NSString*)format cancelled:(BOOL)cancelled flipped:(BOOL)flipped callback:(NSString*)callback{
     NSNumber* cancelledNumber = @(cancelled ? 1 : 0);
-
+    
+    int barcodeIndex = 0;
+	BOOL hasCharacter = false;
+    for (barcodeIndex = 0; barcodeIndex<scannedText.length; barcodeIndex++){
+		if ([scannedText characterAtIndex:barcodeIndex] == 13){
+			hasCharacter = true;
+            break;
+		}
+    }
+    NSNumber* hasSegmentTerminatorNumber = @(hasCharacter ? 1 : 0);
+    
     NSMutableDictionary* resultDict = [NSMutableDictionary new];
     resultDict[@"text"] = scannedText;
     resultDict[@"format"] = format;
     resultDict[@"cancelled"] = cancelledNumber;
-
+    resultDict[@"hasSegmentTerminator"] = hasSegmentTerminatorNumber;
+    
     CDVPluginResult* result = [CDVPluginResult
                                resultWithStatus: CDVCommandStatus_OK
                                messageAsDictionary: resultDict
